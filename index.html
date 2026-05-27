@@ -345,10 +345,33 @@
     text-align: center; text-transform: uppercase; font-weight: 600;
   }
 
+  /* SLIDE — что предлагаем */
+  .offer-grid {
+    display: grid; grid-template-columns: 0.9fr 1.2fr; gap: 48px;
+    margin-top: 36px; align-items: center;
+  }
+  .screen-ph {
+    width: 100%; aspect-ratio: 4/5; border-radius: 16px;
+    border: 2px dashed var(--gold-2); background: rgba(217,190,110,0.06);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: var(--gold); text-align: center;
+  }
+  .screen-ph .ph-ico { font-size: 44px; opacity: 0.75; }
+  .screen-ph .ph-cap { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; }
+  .offer-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 0; border-bottom: 1px solid rgba(217,190,110,0.15);
+  }
+  .offer-item:last-child { border-bottom: none; }
+  .offer-item .oi-ico { font-size: 24px; flex-shrink: 0; line-height: 1.3; }
+  .offer-item .oi-text { font-size: 18px; line-height: 1.5; color: var(--white); }
+  .offer-item .oi-text strong { color: var(--gold); }
+
   /* Маленький QR на каждом слайде */
   .qr-mini {
-    position: absolute; left: 10vw; bottom: 40px;
+    position: absolute; right: 150px; bottom: 36px;
     display: flex; align-items: center; gap: 12px;
+    flex-direction: row-reverse;
     z-index: 50;
   }
   .qr-mini img {
@@ -374,12 +397,12 @@
     h1 { font-size: 38px; }
     h2 { font-size: 30px; }
     h3 { font-size: 22px; }
-    .s1, .two-col, .pains-grid, .results-grid, .ba-grid {
+    .s1, .two-col, .pains-grid, .results-grid, .ba-grid, .offer-grid {
       grid-template-columns: 1fr; gap: 32px;
     }
     .pain-card .quote, li { font-size: 17px; }
     .hook-block .hook-list, .hook-block .hook-answer { font-size: 19px; }
-    .qr-mini { bottom: 22px; gap: 8px; }
+    .qr-mini { right: 88px; bottom: 84px; gap: 8px; }
     .qr-mini img { width: 60px; height: 60px; padding: 4px; }
     .qr-mini .qr-mini-cap { font-size: 10px; max-width: 78px; }
   }
@@ -387,7 +410,7 @@
 </head>
 <body>
 
-<div class="nav" id="nav">1 / 7</div>
+<div class="nav" id="nav">1 / 8</div>
 <div class="arrows">
   <div class="arrow" onclick="prev()">↑</div>
   <div class="arrow" onclick="next()">↓</div>
@@ -503,9 +526,39 @@
   <div class="closing">У каждой из этих болей — <strong style="color: var(--gold-soft);">свой из 12 архетипов</strong>.<br>И <span style="color: var(--gold-soft);">своя авторская медитация, которую бот подберёт под Вас.</span></div>
 </section>
 
-<!-- ========== SLIDE 3 — РЕШЕНИЕ ========== -->
+<!-- ========== SLIDE 4 — ЧТО ПРЕДЛАГАЕМ ========== -->
+<section class="slide" id="s-offer">
+  <span class="slide-tag">04 — Что предлагаем</span>
+  <h2 style="text-align: center;">Тренажёр + Нейропсихолог.<br><span class="gold-text">В одном проекте.</span></h2>
+  <div class="subtitle" style="text-align: center;">«Узнай себя лучше» — психологическая поддержка, которая всегда под рукой.</div>
+
+  <div class="offer-grid">
+    <div class="screen-ph">
+      <div class="ph-ico">📱</div>
+      <div class="ph-cap">Скрин проекта<br>скоро</div>
+    </div>
+    <div class="offer-list">
+      <div class="offer-item">
+        <span class="oi-ico">💛</span>
+        <span class="oi-text"><strong>Убирает страхи и сомнения</strong>, что «с вами что-то не так».</span>
+      </div>
+      <div class="offer-item">
+        <span class="oi-ico">🔒</span>
+        <span class="oi-text"><strong>Анонимно.</strong> Никому не нужно открываться и ничего объяснять.</span>
+      </div>
+      <div class="offer-item">
+        <span class="oi-ico">🧭</span>
+        <span class="oi-text"><strong>Самостоятельная проработка</strong> — в своём темпе, когда удобно вам.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing" style="margin-top: 36px;">Вот что вы найдёте в этом тренажёре.</div>
+</section>
+
+<!-- ========== SLIDE 5 — РЕШЕНИЕ ========== -->
 <section class="slide" id="s3">
-  <span class="slide-tag">04 — Что мы создали</span>
+  <span class="slide-tag">05 — Что мы создали</span>
   <h2 style="text-align: center;">Узнай себя лучше</h2>
   <div class="subtitle" style="text-align: center;">Пять ступеней. Одна траектория. От «не понимаю, что со мной» до глубинной проработки с Ольгой.</div>
 
@@ -586,7 +639,7 @@
 
 <!-- ========== SLIDE 4 — КАК РАБОТАЕТ ========== -->
 <section class="slide" id="s4">
-  <span class="slide-tag">05 — Как это работает</span>
+  <span class="slide-tag">06 — Как это работает</span>
   <h2 style="text-align: center;">Тренажёр → Нейропсихолог → <span class="gold-text">Техника.</span></h2>
   <div class="subtitle" style="text-align: center; max-width: 760px; margin: 0 auto 40px;">Поняли что не так → разобрали под свой архетип → получили технику с результатом.</div>
 
@@ -604,7 +657,7 @@
     <div class="module-card hero">
       <div class="module-eyebrow">Ступень 2 · Нейропсихолог</div>
       <h3 style="font-size: 22px; margin-bottom: 18px; color: var(--white);">Разобрали под Ваш архетип</h3>
-      <div class="step"><span class="step-num">1.</span> Открываете <strong>@neuropsychologOT_bot</strong> — днём или ночью</div>
+      <div class="step"><span class="step-num">1.</span> Открываете <strong>@neuropsychologOT_bot</strong> — <span style="white-space: nowrap;">днём или ночью</span></div>
       <div class="step"><span class="step-num">2.</span> Первый раз: интервью 15 минут → <strong>Ваши 3 архетипа</strong></div>
       <div class="step"><span class="step-num">3.</span> Задаёте <strong>свой вопрос</strong>: «не могу простить», «снова сорвалась», «страшно уходить»</div>
       <div class="step"><span class="step-num">4.</span> Бот отвечает <strong>из Вашего архетипа</strong>, не общими советами</div>
@@ -634,12 +687,12 @@
 
 <!-- ========== SLIDE 5 — РЕЗУЛЬТАТЫ ========== -->
 <section class="slide" id="s5">
-  <span class="slide-tag">06 — Что Вы получаете</span>
+  <span class="slide-tag">07 — Что Вы получаете</span>
   <h2 style="text-align: center;">Ответ — за 3 дня.<br><span class="gold-text">Глубинная работа — за 30.</span></h2>
 
   <div class="results-band">
     <h3>За 3 бесплатных дня <span class="price-tag">— бесплатно, без карты</span></h3>
-    <div style="font-size: 16px; color: var(--white); opacity: 0.9; margin: -8px 0 18px;">Бонус: <strong>76 книг</strong> для проработки · <strong>30 минут консультации</strong> с Ольгой Турьевой в личке. Оставите отзыв — <strong>+2 дня</strong> (до 5 дней бесплатно).</div>
+    <div style="font-size: 16px; color: var(--white); opacity: 0.9; margin: -8px 0 18px;">Бонус: <strong>76 книг</strong> для проработки · <strong>30 минут консультации</strong> с Ольгой Турьевой в личке. <strong>Бонус за отзыв — +2 дня (до 5 дней бесплатно).</strong></div>
     <div class="results-grid">
       <div>
         <div class="price-tag" style="margin-bottom: 12px;">Нейропсихолог — 1 день бесплатно</div>
@@ -699,7 +752,7 @@
 
 <!-- ========== SLIDE 6 — CTA ========== -->
 <section class="slide s6" id="s6">
-  <span class="slide-tag">07 — Начните сегодня</span>
+  <span class="slide-tag">08 — Начните сегодня</span>
   <h1 style="text-align: center;">Начните с <span class="gold-text">3 бесплатных дней</span></h1>
   <div class="subtitle" style="text-align: center; margin-bottom: 16px;">Без оплаты. Без карты. Без обязательств.<br>Оставите отзыв — <span class="gold-text">+2 дня в подарок</span>, итого до 5 дней бесплатно.<br>Уйти можно молча — никто не напишет, не позвонит, не упрекнёт.</div>
 
