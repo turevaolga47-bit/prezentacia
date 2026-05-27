@@ -305,6 +305,64 @@
     letter-spacing: 1.2px; opacity: 0.85;
   }
 
+  /* SLIDE — До / После */
+  .ba-grid {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px;
+    margin-top: 36px; align-items: start;
+  }
+  .ba-col { border-radius: 14px; padding: 26px 30px; backdrop-filter: blur(6px); }
+  .ba-col.before {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .ba-col.after {
+    background: rgba(217,190,110,0.08);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25), 0 0 50px rgba(217,190,110,0.06);
+  }
+  .ba-head {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 16px;
+  }
+  .ba-col.before .ba-head { color: rgba(255,255,255,0.55); }
+  .ba-col.after .ba-head { color: var(--gold); }
+  .ba-col.before li { font-size: 16px; color: rgba(255,255,255,0.82); margin-bottom: 12px; }
+  .ba-item {
+    display: flex; gap: 16px; align-items: center;
+    padding: 13px 0; border-top: 1px solid rgba(217,190,110,0.18);
+  }
+  .ba-item:first-of-type { border-top: none; padding-top: 2px; }
+  .ba-item .ba-text { flex: 1; font-size: 16px; line-height: 1.5; color: var(--white); }
+  .ba-qr {
+    width: 84px; height: 84px; flex-shrink: 0; border-radius: 10px;
+    background: #fff; border: 2px solid var(--gold); padding: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ba-qr img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .ba-qr.placeholder {
+    background: rgba(217,190,110,0.10); border: 1.5px dashed var(--gold-2);
+    color: var(--gold); font-size: 9px; letter-spacing: 0.5px; line-height: 1.3;
+    text-align: center; text-transform: uppercase; font-weight: 600;
+  }
+
+  /* Маленький QR на каждом слайде */
+  .qr-mini {
+    position: absolute; left: 10vw; bottom: 40px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 50;
+  }
+  .qr-mini img {
+    width: 86px; height: 86px;
+    background: #fff; border: 2px solid var(--gold);
+    border-radius: 10px; padding: 6px; display: block;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.45), 0 0 22px rgba(217,190,110,0.18);
+  }
+  .qr-mini .qr-mini-cap {
+    color: var(--gold); font-size: 11px; letter-spacing: 1.8px;
+    text-transform: uppercase; font-weight: 500; line-height: 1.35;
+    max-width: 92px;
+  }
+
   @media print {
     .nav, .arrows, .particle { display: none; }
     body::before, body::after { animation: none; }
@@ -316,17 +374,20 @@
     h1 { font-size: 38px; }
     h2 { font-size: 30px; }
     h3 { font-size: 22px; }
-    .s1, .two-col, .pains-grid, .results-grid {
+    .s1, .two-col, .pains-grid, .results-grid, .ba-grid {
       grid-template-columns: 1fr; gap: 32px;
     }
     .pain-card .quote, li { font-size: 17px; }
     .hook-block .hook-list, .hook-block .hook-answer { font-size: 19px; }
+    .qr-mini { bottom: 22px; gap: 8px; }
+    .qr-mini img { width: 60px; height: 60px; padding: 4px; }
+    .qr-mini .qr-mini-cap { font-size: 10px; max-width: 78px; }
   }
 </style>
 </head>
 <body>
 
-<div class="nav" id="nav">1 / 6</div>
+<div class="nav" id="nav">1 / 7</div>
 <div class="arrows">
   <div class="arrow" onclick="prev()">↑</div>
   <div class="arrow" onclick="next()">↓</div>
@@ -350,9 +411,49 @@
   </div>
 </section>
 
-<!-- ========== SLIDE 2 — ЧТО РЕШАЕТ ========== -->
+<!-- ========== SLIDE 2 — ДО / ПОСЛЕ ========== -->
+<section class="slide s-ba" id="s2ba">
+  <span class="slide-tag">02 — До / После</span>
+  <h2 style="text-align: center;">Раньше я заказывала.<br><span class="gold-text">Теперь — сама себе режиссёр всех проектов.</span></h2>
+  <div class="subtitle" style="text-align: center;">Кризисный психолог Ольга Турьева — до и после <strong>Вайб-кодинга 2</strong>.</div>
+
+  <div class="ba-grid">
+    <div class="ba-col before">
+      <div class="ba-head">До</div>
+      <ul>
+        <li>Сайты и продукты приходилось <strong>заказывать</strong> — и платить большие деньги.</li>
+        <li>Готовое нельзя было <strong>упаковать, доработать или изменить</strong>.</li>
+        <li>Всё держалось на подрядчиках, а качество — чаще всего низкое.</li>
+        <li>Почти каждый заказ потом шёл <strong>в переделку</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="ba-col after">
+      <div class="ba-head">После</div>
+
+      <div class="ba-item">
+        <div class="ba-text"><strong>Сама</strong> сделала сайт, оформила «Чёрный ретрит» и собрала <strong>систему агентов</strong>.</div>
+        <div class="ba-qr placeholder">QR<br>Чёрный<br>ретрит</div>
+      </div>
+
+      <div class="ba-item">
+        <div class="ba-text">Создала тренажёр <strong>«Узнай себя лучше»</strong>.</div>
+        <div class="ba-qr"><img class="qr-trainer-img" alt="QR тренажёра «Узнай себя лучше»"></div>
+      </div>
+
+      <div class="ba-item">
+        <div class="ba-text">Собрала <strong>все свои продукты</strong> и личную визитку.</div>
+        <div class="ba-qr placeholder">QR<br>Визитка</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">И главное — ушёл страх создавать и продвигать свои проекты.</div>
+</section>
+
+<!-- ========== SLIDE 3 — ЧТО РЕШАЕТ ========== -->
 <section class="slide" id="s2">
-  <span class="slide-tag">02 — Кому это</span>
+  <span class="slide-tag">03 — Кому это</span>
   <h2 style="text-align: center;">Вам больно.<br>А пойти к психологу — <span class="gold-text">не получается.</span></h2>
   <div class="gold-line" style="margin: 0 auto 32px;"></div>
 
@@ -398,7 +499,7 @@
 
 <!-- ========== SLIDE 3 — РЕШЕНИЕ ========== -->
 <section class="slide" id="s3">
-  <span class="slide-tag">03 — Что мы создали</span>
+  <span class="slide-tag">04 — Что мы создали</span>
   <h2 style="text-align: center;">Узнай себя лучше</h2>
   <div class="subtitle" style="text-align: center;">Пять ступеней. Одна траектория. От «не понимаю, что со мной» до глубинной проработки с Ольгой.</div>
 
@@ -479,7 +580,7 @@
 
 <!-- ========== SLIDE 4 — КАК РАБОТАЕТ ========== -->
 <section class="slide" id="s4">
-  <span class="slide-tag">04 — Как это работает</span>
+  <span class="slide-tag">05 — Как это работает</span>
   <h2 style="text-align: center;">Тренажёр → Нейропсихолог → <span class="gold-text">Техника.</span></h2>
   <div class="subtitle" style="text-align: center; max-width: 760px; margin: 0 auto 40px;">Поняли что не так → разобрали под свой архетип → получили технику с результатом.</div>
 
@@ -527,11 +628,12 @@
 
 <!-- ========== SLIDE 5 — РЕЗУЛЬТАТЫ ========== -->
 <section class="slide" id="s5">
-  <span class="slide-tag">05 — Что Вы получаете</span>
-  <h2 style="text-align: center;">Ответ — за 7 дней.<br><span class="gold-text">Глубинная работа — за 30.</span></h2>
+  <span class="slide-tag">06 — Что Вы получаете</span>
+  <h2 style="text-align: center;">Ответ — за 3 дня.<br><span class="gold-text">Глубинная работа — за 30.</span></h2>
 
   <div class="results-band">
-    <h3>За 7 бесплатных дней <span class="price-tag">— бесплатно, без карты</span></h3>
+    <h3>За 3 бесплатных дня <span class="price-tag">— бесплатно, без карты</span></h3>
+    <div style="font-size: 16px; color: var(--white); opacity: 0.9; margin: -8px 0 18px;">Оставите отзыв — <strong>+2 дня в подарок</strong>. Всего <strong>до 5 дней бесплатно</strong>.</div>
     <div class="results-grid">
       <div>
         <div class="price-tag" style="margin-bottom: 12px;">Нейропсихолог — здесь работа</div>
@@ -591,9 +693,9 @@
 
 <!-- ========== SLIDE 6 — CTA ========== -->
 <section class="slide s6" id="s6">
-  <span class="slide-tag">06 — Начните сегодня</span>
-  <h1 style="text-align: center;">Начните с <span class="gold-text">7 бесплатных дней</span></h1>
-  <div class="subtitle" style="text-align: center; margin-bottom: 16px;">Без оплаты. Без карты. Без обязательств.<br>Уйти можно молча — никто не напишет, не позвонит, не упрекнёт.</div>
+  <span class="slide-tag">07 — Начните сегодня</span>
+  <h1 style="text-align: center;">Начните с <span class="gold-text">3 бесплатных дней</span></h1>
+  <div class="subtitle" style="text-align: center; margin-bottom: 16px;">Без оплаты. Без карты. Без обязательств.<br>Оставите отзыв — <span class="gold-text">+2 дня в подарок</span>, итого до 5 дней бесплатно.<br>Уйти можно молча — никто не напишет, не позвонит, не упрекнёт.</div>
 
   <div class="qr-frame"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYAQMAAACEqAqfAAAABlBMVEX///8PGy2ydwOsAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACLUlEQVR4nO3ZQW6lMAwAUCQOxtU5WKRU8ymxk9BqlkF9XiBI7Bd2lmHbhPiLcdQhyr/VvdZzzLs3PimPZSwWi8Va2SpTySfxvOq6u9qSn8pYLBaLtbp1tMTcImpuID+emcpYLBaL9S7ruJi9tY1YiwoWi8Vivd4aukOeGlgsFov1ZisiJ342us9C025XxmKxWKylrSHmkufLXMZisVisha3fI+rOa2H/vzoWi8VirWblJlB+ecy/BrrH7wuLxWKx1raiRWxt8biyhwYyjAmllW35jsVisVgLW1uqu+Nsc0Gs1VTcPT4Gi8VisRayng+IkSDy5vYSZ54sFovFeo01TAP5m0/3CSjPBXv3HiwWi8Va3rrjbG2jJnXIK/kVtvBZLBaLtbiVhSj+JO7T2lTR9w4Wi8ViLWlFHKkT3Dm5rmQr/C3NFCwWi8Va2PphOAg/ush4/PBtiMVisVjrWkeTzn77yOflvBylO47FYrFYK1ulCbFd84QwfCAaIp3JYrFYrHdYg3oXp+6QBoaHOxaLxWItb0VJCLVlR0l3UjSa6z1YLBaLta71FNEsjvoUcfq8xmKxWKw1rSl7aAd7l91mimPMG20Wi8VirWZ1HSQeI/vsH2ufku5YLBaLtbgVOc/CsBZRupdhsVgs1tustn3F/D942igsFovFeqFV23/ekkvOJERZ22CxWCzW4lbEMYLd2nPKzmKxWKw3WEM85Fx33WWo2FgsFou1uCXE34svDbZfEWJvBU0AAAAASUVORK5CYII=" alt="QR @renazer_Psycholog_Olga_bot"></div>
 
@@ -669,6 +771,28 @@
       if (pos >= top && pos < bottom && current !== i) { current = i; updateNav(); }
     });
   });
+
+  // Маленький QR в углу каждого слайда (на финальном он уже большой — пропускаем)
+  (function () {
+    const bigQr = document.querySelector('.qr-frame img');
+    if (!bigQr) return;
+    // Реальный QR тренажёра на слайде «До / После»
+    document.querySelectorAll('.qr-trainer-img').forEach((i) => { i.src = bigQr.src; });
+    document.querySelectorAll('.slide').forEach((slide) => {
+      if (slide.classList.contains('s6') || slide.classList.contains('s-ba')) return;
+      const badge = document.createElement('div');
+      badge.className = 'qr-mini';
+      const img = document.createElement('img');
+      img.src = bigQr.src;
+      img.alt = 'QR — запуск тренажёра';
+      const cap = document.createElement('span');
+      cap.className = 'qr-mini-cap';
+      cap.innerHTML = '3 дня<br>бесплатно';
+      badge.appendChild(img);
+      badge.appendChild(cap);
+      slide.appendChild(badge);
+    });
+  })();
 </script>
 
 </body>
